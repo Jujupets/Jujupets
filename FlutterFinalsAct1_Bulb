@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({
+    super.key,
+  });
+
+  @override
+  State<MyApp> createState() => _myAppState();
+}
+
+// ignore: camel_case_types, unused_element
+class _myAppState extends State<MyApp> {
+  var isBulbOn = false;
+  _changeOnOff() {
+    if (isBulbOn) {
+      return Image.asset("images/b_on.png");
+    } else {
+      return Image.asset("images/b_off.png");
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.black,
+        body: Container(
+          width: double.infinity,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                //_changeOnOff(),
+                isBulbOn
+                    ? Image.asset("images/b_on.png")
+                    : Image.asset("images/b_off.png"),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      isBulbOn = !isBulbOn;
+                    });
+                  },
+                  child: const Text("change"),
+                )
+              ]),
+        ),
+      ),
+    );
+  }
+}
